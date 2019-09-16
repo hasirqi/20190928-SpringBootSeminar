@@ -1,0 +1,43 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Artist List</title>
+</head>
+<body>
+<form th:action="@{/artist/create}" method="get">
+    <input type="submit" name="form" value="New">
+</form>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">birthday</th>
+            <th scope="col" rowspan="2">Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="artist : ${artists}">
+            <td th:text="${artist.id}">id</td>
+            <td th:text="${artist.name}">firstName</td>
+            <td th:text="${artist.gender}">lastName</td>
+            <td th:text="${artist.birthday}">lastName</td>
+            <td>
+                <form th:action="@{/artist/edit}" method="get">
+                    <input type="submit" name="form" value="Edit">
+                    <input type="hidden" name="id" th:value="${artist.id}">
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/artist/delete}" method="post">
+                    <input type="submit" name="form" value="Delete">
+                    <input type="hidden" name="id" th:value="${artist.id}">
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
