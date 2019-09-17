@@ -4,7 +4,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -12,15 +15,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ArtistForm {
 
-    @NonNull
+    @NotEmpty
     @Size(min =1 , max = 200)
     private String name;
 
-    @NonNull
+    @NotEmpty
     private String gender;
 
-    @NonNull
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
 
 }

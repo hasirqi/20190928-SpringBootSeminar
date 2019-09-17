@@ -15,6 +15,8 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+  messages:
+    basename: i18n/messages
   data:
     web:
       base-path: /artist

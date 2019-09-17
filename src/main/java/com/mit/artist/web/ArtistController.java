@@ -27,8 +27,8 @@ public class ArtistController {
     final static Map<String, String> GENDER_ITEMS =
             Collections.unmodifiableMap(new LinkedHashMap<String, String>() {
                 {
-                    put("1", "lable.six.man");
-                    put("2", "lable.six.woman");
+                    put("1", "lable.six.female");
+                    put("2", "lable.six.male");
                 }
             });
 
@@ -91,14 +91,15 @@ public class ArtistController {
         return "redirect:/artist/list";
     }
 
-    @GetMapping(path = "top", params = "goToTop")
-    String goToTop() {
-        return "redirect:/artist/list";
-    }
-
     @PostMapping(path = "delete")
     String delete(@RequestParam Integer id) {
         artistService.delete(id);
         return "redirect:/artist/list";
     }
+
+    @GetMapping(path = "top")
+    String goToTop() {
+        return "redirect:/artist/list";
+    }
+
 }

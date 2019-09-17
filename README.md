@@ -1,1 +1,1 @@
-Test
+docker exec -it artist-db   bash

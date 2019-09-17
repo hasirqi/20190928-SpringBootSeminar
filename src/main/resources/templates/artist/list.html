@@ -21,9 +21,11 @@
     <tbody>
         <tr th:each="artist : ${artists}">
             <td th:text="${artist.id}">id</td>
-            <td th:text="${artist.name}">firstName</td>
-            <td th:text="${artist.gender}">lastName</td>
-            <td th:text="${artist.birthday}">lastName</td>
+            <td th:text="${artist.name}">name</td>
+            <td th:if="${artist.gender eq '1'}"><label th:text="#{lable.six.male}"></label></td>
+            <td th:if="${artist.gender eq '2'}"><label th:text="#{lable.six.female}"></label></td>
+            <td th:text="${artist.birthday}">birthday
+            </td>
             <td>
                 <form th:action="@{/artist/edit}" method="get">
                     <input type="submit" name="form" value="Edit">
