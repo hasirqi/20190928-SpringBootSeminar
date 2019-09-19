@@ -2,20 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Artist List</title>
+    <title th:text="#{title.list}" />
 </head>
 <body>
+<form th:action="@{/artist/list}" method="get" th:object="${searchForm}">
+    <label th:text="#{lable.name}"></label>
+    <input type="text" id="name" name="name" th:field="*{name}" />
+    <input type="submit" name="form" th:value="#{button.search}"></input>
+</form>
 <form th:action="@{/artist/create}" method="get">
-    <input type="submit" name="form" value="New">
+    <input type="submit" name="form" th:value="#{button.create}">
 </form>
 <table class="table">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Gender</th>
-            <th scope="col">birthday</th>
-            <th scope="col" rowspan="2">Operation</th>
+            <th scope="col"><label th:text="#{lable.id}"></label></th>
+            <th scope="col"><label th:text="#{lable.name}"></label></th>
+            <th scope="col"><label th:text="#{lable.gender}"></label></th>
+            <th scope="col"><label th:text="#{lable.birthday}"></label></th>
+            <th scope="col" rowspan="2"><label th:text="#{lable.operation}"></label></th>
         </tr>
     </thead>
     <tbody>
@@ -24,17 +29,17 @@
             <td th:text="${artist.name}">name</td>
             <td th:if="${artist.gender eq '1'}"><label th:text="#{lable.six.male}"></label></td>
             <td th:if="${artist.gender eq '2'}"><label th:text="#{lable.six.female}"></label></td>
-            <td th:text="${artist.birthday}">birthday
+            <td th:text="${#temporals.format(artist.birthday,'yyyy/MM/dd')}">birthday
             </td>
             <td>
                 <form th:action="@{/artist/edit}" method="get">
-                    <input type="submit" name="form" value="Edit">
+                    <input type="submit" name="form" th:value="#{button.edit}">
                     <input type="hidden" name="id" th:value="${artist.id}">
                 </form>
             </td>
             <td>
                 <form th:action="@{/artist/delete}" method="post">
-                    <input type="submit" name="form" value="Delete">
+                    <input type="submit" name="form" th:value="#{button.delete}">
                     <input type="hidden" name="id" th:value="${artist.id}">
                 </form>
             </td>

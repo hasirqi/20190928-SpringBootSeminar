@@ -41,8 +41,8 @@ public class ArtistController {
     }
 
     @GetMapping(path = "list")
-    String list(Model model) {
-        List<Artist> artists = artistService.find(null);
+    String list(Model model, @Validated SearchForm form) {
+        List<Artist> artists = artistService.find(form.getName());
         model.addAttribute("artists", artists);
         return "artist/list";
     }

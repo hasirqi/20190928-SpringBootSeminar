@@ -2,19 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Artist Info</title>
+    <title th:text="#{title.create}" />
 </head>
 <body>
     <form th:action="@{/artist/create}" method="post" th:object="${artistForm}">
         <dl>
-            <dt><label for="name">Name</label></dt>
+            <dt><label for="name" th:text="#{lable.name}"></label></dt>
             <dd>
                 <input type="text" id="name" name="name" th:field="*{name}" th:errorclass="error-input" />
                 <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" />
             </dd>
         </dl>
         <dl>
-            <dt><label class="custom-control">Gender</label></dt>
+            <dt><label class="custom-control" th:text="#{lable.gender}"></label></dt>
             <dd>
                 <div class="custom-control custom-radio" th:each="gender : ${genderItems}">
                     <input type="radio" class="custom-control-input" th:value="${gender.key}" th:field="*{gender}" />
@@ -24,16 +24,16 @@
             </dd>
         </dl>
         <dl>
-            <dt><label for="birthday">Birthday</label></dt>
+            <dt><label for="birthday" th:text="#{lable.birthday}"></label></dt>
             <dd>
                 <input type="date" id="birthday" name="birthday" th:field="*{birthday}" placeholder="yyyy/mm/dd" th:errorclass="error-input"/>
                 <span th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" />
             </dd>
         </dl>
-        <input th:type="submit" value="Add" />
+        <input th:type="submit" th:value="#{button.create}" />
     </form>
     <form th:action="@{/artist/top}" method="get">
-        <input th:type="submit" value="Back" />
+        <input th:type="submit" th:value="#{button.back}" />
     </form>
 </body>
 </html>

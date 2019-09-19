@@ -13,7 +13,7 @@ public class Artist {
 
   @Id
   @GeneratedValue
-  private long id;
+  private Integer id;
 
   @Column(nullable = false)
   private String name;
