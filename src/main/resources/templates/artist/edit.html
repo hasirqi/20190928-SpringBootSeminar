@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{title.edit}" />
+</head>
+<body>
+    <form th:action="@{/artist/edit}" method="post" th:object="${artistForm}">
+        <dl>
+            <dt><label for="name" th:text="#{lable.name}"></label></dt>
+            <dd>
+                <input type="text" id="name" name="name" th:field="*{name}" th:errorclass="error-input" />
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" />
+            </dd>
+        </dl>
+        <dl>
+            <dt><label class="custom-control" th:text="#{lable.gender}"></label></dt>
+            <dd>
+                <div class="custom-control custom-radio" th:each="gender : ${genderItems}">
+                    <input type="radio" class="custom-control-input" th:value="${gender.key}" th:field="*{gender}" />
+                    <label class="custom-control-label" th:for="${#ids.prev('gender')}" th:text="#{${gender.value}}"></label>
+                </div>
+                <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" />
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="birthday" th:text="#{lable.birthday}"></label></dt>
+            <dd>
+                <input type="date" id="birthday" name="birthday" th:field="*{birthday}" placeholder="yyyy/mm/dd" th:errorclass="error-input"/>
+                <span th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" />
+            </dd>
+        </dl>
+        <dl>
+            <dt><label th:text="#{lable.updateTime}"></label></dt>
+            <dd>
+                <label th:text="*{#temporals.format(updateTime,'yyyy/MM/dd HH:MM:dd')}" ></label>
+            </dd>
+        </dl>
+        <input th:type="submit" th:value="#{button.edit}" />
+    </form>
+    <form th:action="@{/artist/top}" method="get">
+        <input th:type="submit" th:value="#{button.back}" />
+    </form>
+</body>
+</html>

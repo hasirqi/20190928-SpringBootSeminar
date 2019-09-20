@@ -69,7 +69,7 @@ public class ArtistController {
 
     @GetMapping(path = "edit", params = "form")
     String edit(@RequestParam Integer id,
-                @Validated ArtistForm form, Model model) {
+                ArtistForm form, Model model) {
         Artist artist = artistService.findById(id);
         BeanUtils.copyProperties(artist, form);
         model.addAttribute("genderItems", GENDER_ITEMS);
