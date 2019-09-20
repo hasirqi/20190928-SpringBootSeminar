@@ -5,6 +5,12 @@
     <title th:text="#{title.list}" />
 </head>
 <body>
+<ul>
+    <li><a href="/artist/list?lang=mn" data-th-text="#{link.mongolian}"></a></li>
+    <li><a href="/artist/list?lang=ja" data-th-text="#{link.japanese}"></a></li>
+    <li><a href="/artist/list?lang=en" data-th-text="#{link.english}"></a></li>
+</ul>
+
 <form th:action="@{/artist/list}" method="get" th:object="${searchForm}">
     <label th:text="#{lable.name}"></label>
     <input type="text" id="name" name="name" th:field="*{name}" />
