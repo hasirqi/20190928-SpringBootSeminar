@@ -33,8 +33,8 @@
         <tr th:each="artist : ${artists}">
             <td th:text="${artist.id}">id</td>
             <td th:text="${artist.name}">name</td>
-            <td th:if="${artist.gender eq '1'}"><label th:text="#{lable.six.male}"></label></td>
-            <td th:if="${artist.gender eq '2'}"><label th:text="#{lable.six.female}"></label></td>
+            <td th:if="${artist.gender eq '1'}"><label th:text="#{lable.six.female}"></label></td>
+            <td th:if="${artist.gender eq '2'}"><label th:text="#{lable.six.male}"></label></td>
             <td th:text="${#temporals.format(artist.birthday,'yyyy/MM/dd')}">birthday
             </td>
             <td>

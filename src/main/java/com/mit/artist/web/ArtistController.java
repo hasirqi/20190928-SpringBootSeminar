@@ -87,6 +87,7 @@ public class ArtistController {
         Artist artist = new Artist();
         BeanUtils.copyProperties(form, artist);
         artist.setId(id);
+        artist.setUpdateTime(LocalDateTime.now());
         artistService.upadte(artist);
         return "redirect:/artist/list";
     }

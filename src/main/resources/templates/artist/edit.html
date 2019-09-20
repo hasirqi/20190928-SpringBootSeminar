@@ -33,10 +33,11 @@
         <dl>
             <dt><label th:text="#{lable.updateTime}"></label></dt>
             <dd>
-                <label th:text="*{#temporals.format(updateTime,'yyyy/MM/dd HH:MM:dd')}" ></label>
+                <label th:text="*{#temporals.format(updateTime,'yyyy/MM/dd hh:mm:ss')}" ></label>
             </dd>
         </dl>
         <input th:type="submit" th:value="#{button.edit}" />
+        <input type="hidden" th:field="*{id}" />
     </form>
     <form th:action="@{/artist/top}" method="get">
         <input th:type="submit" th:value="#{button.back}" />

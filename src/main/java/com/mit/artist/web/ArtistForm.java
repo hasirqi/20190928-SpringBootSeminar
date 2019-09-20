@@ -27,5 +27,7 @@ public class ArtistForm {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
 
+    private Integer id;
+
     private LocalDateTime updateTime;
 }
