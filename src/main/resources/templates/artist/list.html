@@ -3,13 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{title.list}" />
+    <link th:if="${lang == 'mn'}" href="/static/css/mongolian.css" th:href="@{/static/css/mongolian.css}" rel="stylesheet"></link>
+    <script language="JavaScript">
+        function changeFont(type) {
+            var links = document.getElementsByTagName('a')
+            for(var i=0;i<links.length;i++) {
+                links[i].style.fontFamily = "Mongolian Title" + type
+            }
+        }
+    </script>
 </head>
 <body>
-<ul>
-    <li><a href="/artist/list?lang=mn" data-th-text="#{link.mongolian}"></a></li>
-    <li><a href="/artist/list?lang=ja" data-th-text="#{link.japanese}"></a></li>
-    <li><a href="/artist/list?lang=en" data-th-text="#{link.english}"></a></li>
-</ul>
+
+<a href="/artist/list?lang=mn" data-th-text="#{link.mongolian}"></a>
+<a href="/artist/list?lang=ja" data-th-text="#{link.japanese}"></a>
+<a href="/artist/list?lang=en" data-th-text="#{link.english}"></a>
+
+<div th:if="${lang == 'mn'}">
+    <img class="changeFont" src="/img/title1.jpg" name="title1" onClick="changeFont(1)" />&nbsp;
+    <img class="changeFont" src="/img/title2.jpg" name="title2" onClick="changeFont(2)" />&nbsp;
+    <img class="changeFont" src="/img/title3.jpg" name="title3" onClick="changeFont(3)" />&nbsp;
+    <img class="changeFont" src="/img/title4.jpg" name="title4" onClick="changeFont(4)" />
+</div>
 
 <form th:action="@{/artist/list}" method="get" th:object="${searchForm}">
     <label th:text="#{lable.name}"></label>

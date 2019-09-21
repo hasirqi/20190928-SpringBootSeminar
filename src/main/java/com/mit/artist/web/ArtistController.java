@@ -10,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -41,9 +40,10 @@ public class ArtistController {
     }
 
     @GetMapping(path = "list")
-    String list(Model model, @Validated SearchForm form) {
+    String list(Model model, @Validated SearchForm form, @RequestParam(required = false) String lang) {
         List<Artist> artists = artistService.find(form.getName());
         model.addAttribute("artists", artists);
+        model.addAttribute("lang", lang);
         return "artist/list";
     }
 
