@@ -15,11 +15,35 @@
     src:url('../font/mnglartotf.ttf') format('truetype');
 }
 
-a {
+.mn-a, .mn-label, .mn-td {
     font-family: "Mongolian Title1";
     text-decoration: none;
     writing-mode: tb-rl;
     -ms-writing-mode: tb-rl;
+}
+
+.mn-td, .mn-th {
+    vertical-align: top;
+    text-align: center;
+    width: 18px;
+}
+
+.mn-button {
+    transform: rotate(90deg);
+    font-family: "Mongolian Title1";
+    text-decoration: none;
+    width: 65px;
+}
+.mn-button-margin {
+    transform: rotate(90deg);
+    font-family: "Mongolian Title1";
+    text-decoration: none;
+    width: 65px;
+    margin-top: 15px;
+}
+
+.table thead th, a {
+    vertical-align: top;
 }
 
 .changeFont{
