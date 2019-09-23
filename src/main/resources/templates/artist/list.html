@@ -37,7 +37,8 @@
         </td>
         <td>
             <form class="form-inline" th:action="@{/artist/list}" method="get" th:object="${searchForm}">
-                <input type="text" class="form-control" id="name" name="name" th:field="*{name}" />&nbsp;
+                <input type="text" class="form-control mn-input" id="name" name="name" th:field="*{name}"  />&nbsp;
+                <input type="hidden" name="lang" th:value="${lang}">
                 <input type="submit" name="form" th:value="#{button.search}" class="btn btn-outline-info mn-button" />
             </form>
         </td>
