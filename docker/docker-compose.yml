@@ -16,6 +16,19 @@ services:
       MYSQL_USER: artist
       MYSQL_PASSWORD: artist
 
+  app:
+    build: ./app
+    image: artist-app:0.0.1
+    container_name: artist-app
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    environment:
+      JAR_TARGET: artist-0.0.1-SNAPSHOT.jar
+
 volumes:
   db:
     driver: local
