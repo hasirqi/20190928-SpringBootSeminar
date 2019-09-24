@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{title.create}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <form th:action="@{/artist/create}" method="post" th:object="${artistForm}">
-        <dl>
-            <dt><label for="name" th:text="#{lable.name}"></label></dt>
-            <dd>
-                <input type="text" id="name" name="name" th:field="*{name}" th:errorclass="error-input" />
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name" th:text="#{lable.name}"></label>
+                <input type="text"  class="form-control" id="name" name="name" th:field="*{name}" th:errorclass="error-input" />
                 <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" />
-            </dd>
-        </dl>
+            </div>
+        </div>
+
         <dl>
             <dt><label class="custom-control" th:text="#{lable.gender}"></label></dt>
             <dd>
@@ -30,10 +33,8 @@
                 <span th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" />
             </dd>
         </dl>
-        <input th:type="submit" th:value="#{button.create}" />
-    </form>
-    <form th:action="@{/artist/top}" method="get">
-        <input th:type="submit" th:value="#{button.back}" />
+        <input th:type="submit" th:value="#{button.create}" /><br>
+        <a href="/artist/top" th:text="#{button.back}"></a>
     </form>
 </body>
 </html>
